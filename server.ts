@@ -4,7 +4,6 @@ import crypto from 'crypto';
 import dotenv from 'dotenv';
 import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import { createServer as createViteServer } from 'vite';
 
 dotenv.config();
 
@@ -728,6 +727,7 @@ CREATE INDEX IF NOT EXISTS idx_questions_tags ON public.questions USING GIN(tags
 // Setup Vite middleware for development or static serving for production
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
