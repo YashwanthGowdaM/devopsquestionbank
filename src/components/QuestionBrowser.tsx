@@ -822,15 +822,7 @@ export const QuestionBrowser: React.FC<QuestionBrowserProps> = ({
                           >
                             <Eye className="w-4 h-4" />
                           </button>
-                          {/* Delete Question */}
-                          <button
-                            onClick={() => handleDeleteSingle(q.id)}
-                            className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors"
-                            title="Delete Question"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
+                         </div>
                       </td>
                     </tr>
                   );
@@ -958,13 +950,6 @@ export const QuestionBrowser: React.FC<QuestionBrowserProps> = ({
                     >
                       <Eye className="w-3.5 h-3.5 mr-1 text-slate-500" />
                       Details
-                    </button>
-                    <button
-                      onClick={() => handleDeleteSingle(q.id)}
-                      className="p-1 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-colors"
-                      title="Delete question"
-                    >
-                      <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
