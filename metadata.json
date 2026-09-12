@@ -1,0 +1,6 @@
+{
+  "name": "DevOps Question Bank Management System",
+  "description": "Enterprise Interview Question Bank Management System with AI-driven taxonomy, deep duplicate detection, editable review, analytics, and Supabase export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
