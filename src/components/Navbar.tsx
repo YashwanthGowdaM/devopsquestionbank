@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 py-3">
           {/* Brand Logo & Name */}
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab('browser')}>
             <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Simple, Clean Navigation Tabs */}
-          <nav className="flex items-center space-x-1 sm:space-x-2">
+          <nav className="flex flex-wrap items-center justify-center md:justify-end gap-2 w-full md:w-auto">
             {/* 1. Questions (Main Bank) */}
             <button
               id="nav-tab-browser"

@@ -677,7 +677,7 @@ export const QuestionBrowser: React.FC<QuestionBrowserProps> = ({
                     </button>
                   </th>
                   {/* Sortable Question */}
-                  <th className="p-4 min-w-[340px]">
+                  <th className="p-4">
                     <button
                       onClick={() => handleSort('question')}
                       className="group flex items-center space-x-1 hover:text-indigo-600 text-slate-700 font-semibold text-sm"
