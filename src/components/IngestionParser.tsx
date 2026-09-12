@@ -318,8 +318,8 @@ Troubleshoot a pod stuck in CrashLoopBackOff with Exit Code 137.`}
               Enable High Thinking AI Mode
             </span>
               <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md border border-slate-300">    
-                <option>Gemini 3.1 Flash Lite</option>
-                <option>Gemini 3.1 Pro Preview</option>
+                  <option value="gemini-3.1-flash-lite">Gemini 3.1 Flash Lite </option>
+                  <option value="gemini-3.1-pro-preview">Gemini 3.1 Pro Preview</option>
               </select>
           </label>
 
