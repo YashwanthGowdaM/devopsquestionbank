@@ -161,6 +161,7 @@ Return a strictly valid JSON array of objects. Each object MUST have this struct
           }
         }
 
+        console.log("Using Gemini model:", currentModel);
         const response = await ai.models.generateContent({
           model: currentModel,
           contents: prompt,
