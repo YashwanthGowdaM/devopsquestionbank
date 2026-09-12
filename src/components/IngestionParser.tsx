@@ -148,7 +148,8 @@ export const IngestionParser: React.FC<IngestionParserProps> = ({
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             rawText: inputText,
-            enableThinking: enableThinking,
+            enableThinking,
+            model: selectedModel,
           }),
         });
 
@@ -316,9 +317,7 @@ Troubleshoot a pod stuck in CrashLoopBackOff with Exit Code 137.`}
               <BrainCircuit className="w-4 h-4 text-indigo-600 mr-1.5" />
               Enable High Thinking AI Mode
             </span>
-              <select
-                className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md border border-slate-300"
-              >
+              <select value={selectedModel} onChange={(e) => setSelectedModel(e.target.value)} className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md border border-slate-300">    
                 <option>Gemini 3.1 Flash Lite</option>
                 <option>Gemini 3.1 Pro Preview</option>
               </select>
