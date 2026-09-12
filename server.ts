@@ -68,7 +68,11 @@ app.get('/api/health', (req, res) => {
 // Gemini Analysis Endpoint with Thinking Mode
 app.post('/api/analyze', async (req, res) => {
   try {
-    const { rawText, enableThinking = true } = req.body;
+    const {
+            rawText,
+            enableThinking = true,
+            model = "gemini-3.1-flash-lite",
+          } = req.body;
 
     if (!rawText || typeof rawText !== 'string') {
       res.status(400).json({ error: 'rawText is required.' });
@@ -138,7 +142,10 @@ Return a strictly valid JSON array of objects. Each object MUST have this struct
         'You are an elite Senior Principal DevOps Architect and Interview Panelist. Output pure JSON without markdown backticks or extra text.',
     };
 
-    const candidateModels = ['gemini-3.6-flash', 'gemini-3.1-flash-lite', 'gemini-3.8-flash'];
+    const candidateModels =
+      model === "gemini-3.1-pro-preview"
+        ? ["gemini-3.1-pro-preview"]
+        : ["gemini-3.1-flash-lite"];
     let parsedData: any = null;
     let usedModel = '';
     let lastError: any = null;
@@ -147,7 +154,7 @@ Return a strictly valid JSON array of objects. Each object MUST have this struct
       try {
         const currentConfig = { ...config };
         if (enableThinking) {
-          if (model === 'gemini-3.1-flash-lite') {
+          if (currentModel === 'gemini-3.1-flash-lite') {
             currentConfig.thinkingConfig = { thinkingLevel: ThinkingLevel.MINIMAL };
           } else {
             currentConfig.thinkingConfig = { thinkingLevel: ThinkingLevel.LOW };
@@ -155,7 +162,7 @@ Return a strictly valid JSON array of objects. Each object MUST have this struct
         }
 
         const response = await ai.models.generateContent({
-          model,
+          model: currentModel,
           contents: prompt,
           config: currentConfig,
         });
