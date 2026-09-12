@@ -34,6 +34,7 @@ export const IngestionParser: React.FC<IngestionParserProps> = ({
 }) => {
   const [inputText, setInputText] = useState('');
   const [enableThinking, setEnableThinking] = useState(true);
+  const [selectedModel, setSelectedModel] = useState("gemini-3.1-flash-lite");
   const [isProcessing, setIsProcessing] = useState(false);
   const [processStatus, setProcessStatus] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -315,9 +316,12 @@ Troubleshoot a pod stuck in CrashLoopBackOff with Exit Code 137.`}
               <BrainCircuit className="w-4 h-4 text-indigo-600 mr-1.5" />
               Enable High Thinking AI Mode
             </span>
-            <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-mono hidden sm:inline">
-              gemini-3.1-pro-preview
-            </span>
+              <select
+                className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-md border border-slate-300"
+              >
+                <option>Gemini 3.1 Flash Lite</option>
+                <option>Gemini 3.1 Pro Preview</option>
+              </select>
           </label>
 
           {/* Action Button */}
