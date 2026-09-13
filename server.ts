@@ -384,7 +384,8 @@ app.get('/api/supabase/questions', async (req, res) => {
     const { data, error } = await supabase
       .from('questions')
       .select('*')
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false })
+      .range(0, 9999);
 
     if (error) {
       console.warn('[Supabase Fetch Questions Error]:', error.message);
