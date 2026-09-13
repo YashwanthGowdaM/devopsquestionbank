@@ -23,7 +23,6 @@ import {
 } from 'lucide-react';
 import {
   QuestionRecord,
-  PRIMARY_TOPICS,
   DIFFICULTIES,
   QUESTION_TYPES,
   formatErrorMessage,
@@ -273,12 +272,17 @@ export const QuestionBrowser: React.FC<QuestionBrowserProps> = ({
   };
 
   // Dynamically include custom topics, difficulties, types from current questions
-  const allAvailableTopics = useMemo(() => {
-    const custom = questions.map((q) => q.primary_topic).filter((t) => t && !PRIMARY_TOPICS.includes(t));
-    return Array.from(new Set([...PRIMARY_TOPICS, ...custom])).sort((a, b) =>
-      a.localeCompare(b, undefined, { sensitivity: 'base' })
-    );
-  }, [questions]);
+    const allAvailableTopics = useMemo(() => {
+      return Array.from(
+        new Set(
+          questions
+            .map((q) => q.primary_topic)
+            .filter((t): t is string => Boolean(t))
+        )
+      ).sort((a, b) =>
+        a.localeCompare(b, undefined, { sensitivity: 'base' })
+      );
+    }, [questions]);
 
   const allAvailableDifficulties = useMemo(() => {
     const custom = questions.map((q) => q.difficulty).filter((d) => d && !DIFFICULTIES.includes(d));
